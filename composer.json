@@ -1,0 +1,33 @@
+{
+    "name": "lin-guifeng/think-captcha",
+    "description": "captcha package for thinkphp6，前后端分离，使用redis",
+    "authors": [
+        {
+            "name": "lin-guifeng",
+            "email": "826651687@qq.com"
+        }
+    ],
+    "license": "Apache-2.0",
+    "require": {
+        "php": ">=7.1.0",
+        "topthink/framework": "^6.0.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "linguifeng\\captcha\\": "src/"
+        },
+        "files": [
+            "src/helper.php"
+        ]
+    },
+    "extra": {
+        "think": {
+            "services": [
+                "linguifeng\\captcha\\CaptchaService"
+            ],
+            "config":{
+                "captcha": "src/config.php"
+            }            
+        }
+    }
+}
