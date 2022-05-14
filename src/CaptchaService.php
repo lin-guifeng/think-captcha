@@ -14,7 +14,6 @@ class CaptchaService extends Service
             $validate->extend('captcha', function ($value) {
                 $value = explode('-',$value);
                 return captcha_check($value[0], $value[1]);
-                // return captcha_check($value);
             }, ':attribute错误!');
         });
 
