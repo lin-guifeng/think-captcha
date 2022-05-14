@@ -15,6 +15,10 @@ class CaptchaController
 {
     public function index(Captcha $captcha, $config = null)
     {
-        return $captcha->create($config);
+        $result['status'] = 1;
+		$result['data']   = $captcha->create($config);
+		$result['msg']    = '无错误';
+		$result['code']   = 10000;
+		return json($result);
     }
 }

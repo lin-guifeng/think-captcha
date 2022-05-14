@@ -227,9 +227,6 @@ class Captcha
 
         ob_start();
         // 输出图像
-        // imagepng($this->im);
-        // $content = ob_get_clean();
-        // imagedestroy($this->im);
 
         $tmpfname = tempnam(sys_get_temp_dir(), 'lin-guifeng');
         imagepng($this->im, $tmpfname);
@@ -243,7 +240,6 @@ class Captcha
         $code['img'] = $img_base64;
 
         return $code;
-        // return response($content, 200, ['Content-Length' => strlen($content)])->contentType('image/png');
     }
 
     /**
