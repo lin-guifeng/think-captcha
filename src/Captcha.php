@@ -159,7 +159,7 @@ class Captcha
     }
 
     /**
-     * 输出验证码并把验证码的值保存的session中
+     * 输出验证码并把验证码的值保存在redis中
      * @access public
      * @param null|string $config
      * @param bool        $api
@@ -226,8 +226,8 @@ class Captcha
         }
 
         ob_start();
-        // 输出图像
 
+        // 输出图像
         $tmpfname = tempnam(sys_get_temp_dir(), 'lin-guifeng');
         imagepng($this->im, $tmpfname);
         $img_data = file_get_contents($tmpfname);

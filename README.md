@@ -8,7 +8,7 @@ thinkphp6 前后端分离验证码类库
 
 ## 注意
 
-本验证码只适用于前后端分离，不推荐在模板中使用，并且需要开启redis
+本验证码只适用于前后端分离，并且需要提前开启redis
 
 
 
@@ -37,15 +37,23 @@ public function captcha($id = '')
 
 ### 控制器里验证
 
-使用TP的内置验证功能即可（未经过测试验证）
+使用TP的内置验证功能即可（key与code需要使用'-'连接）
+示例如下：
 ~~~
-$this->validate($data,[
-    'captcha|验证码'=>'require|captcha'
-]);
+$data['captcha'] = input('key').'-'.input('code');
+try {
+    $this->validate($data,[
+        'captcha|验证码'=>'require|captcha'
+    ]);
+} catch (ValidateException $e) {
+    // 验证失败 输出错误信息
+    dump($e->getError());
+}
 ~~~
+
 或者手动验证
 ~~~
-if(!captcha_check($key, $captcha)){
+if(!captcha_check($key, $code)){
  //验证失败
 };
 ~~~
